@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DealWave — Amazon Picks · Tech, Networking & Productivity</title>
+  <meta name="description" content="Amazon Associates microsite with rotating offers, comparison table, newsletter capture, and SEO schema. Fully responsive and fast." />
+  <meta name="robots" content="index,follow" />
+  <meta property="og:title" content="DealWave — Smart Amazon Picks" />
+  <meta property="og:description" content="Curated Amazon picks with one‑click tracking and deal alerts." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0b1220" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{ --bg:#0b1220; --card:#0f1a2f; --muted:#9bb0cc; --text:#e8f0ff; --accent:#4ea1ff; --accent-2:#60ffa8; --warn:#ffd166; --ring:0 0 0 3px rgba(78,161,255,.35) }
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--text);background:radial-gradient(1200px 800px at 80% -10%, #1a2b50 0%, transparent 60%), radial-gradient(900px 600px at -10% 20%, #18243f 0%, transparent 55%), var(--bg)}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:1180px;margin:0 auto;padding:24px}
+    .grid{display:grid;gap:20px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 16px;border-radius:12px;background:linear-gradient(180deg,#4ea1ff,#3b7bd1);color:#fff;font-weight:700;border:0;cursor:pointer;box-shadow:0 10px 30px rgba(78,161,255,.25)}
+    .btn:hover{filter:brightness(1.05)}
+    .btn.secondary{background:linear-gradient(180deg,#2a3859,#202b44);color:#dfe9ff;border:1px solid #314264}
+    .btn.ghost{background:transparent;border:1px dashed #39507a;color:#b9c9e6}
+    .badge{display:inline-flex;align-items:center;gap:8px;background:#0b1a34;border:1px solid #2b4067;color:#b3c6e8;padding:6px 10px;border-radius:999px;font-size:12px}
+    header{position:sticky;top:0;backdrop-filter:blur(10px);background:rgba(13,21,38,.6);border-bottom:1px solid #1e2d4b;z-index:50}
+    .nav{display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:10px}
+    .logo{width:36px;height:36px;border-radius:10px;background:conic-gradient(from 200deg at 50% 50%, #60ffa8, #4ea1ff, #a46bff, #60ffa8);box-shadow:0 0 40px rgba(78,161,255,.35)}
+    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:26px;align-items:center;padding:48px 0}
+    .card{background:linear-gradient(180deg,#111b32,#0e1830);border:1px solid #233456;border-radius:18px;box-shadow:inset 0 1px 0 rgba(255,255,255,.04), 0 20px 50px rgba(5,10,20,.35)}
+    .card.pad{padding:22px}
+    h1{font-size:44px;line-height:1.05;margin:8px 0 12px}
+    h2{font-size:26px;margin:0 0 12px}
+    p{color:var(--muted);line-height:1.6}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
+    .kpi{padding:12px;border-radius:14px;background:#0b162c;border:1px solid #223457;text-align:center}
+    .kpi strong{font-size:22px}
+    .offer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .offer{display:flex;flex-direction:column;gap:10px}
+    .offer .thumb{border-radius:14px;overflow:hidden;border:1px solid #2a3e64}
+    .offer .thumb img{width:100%;height:180px;object-fit:cover;display:block}
+    .offer .meta{display:flex;align-items:center;justify-content:space-between}
+    .compare{overflow:auto}
+    table{border-collapse:collapse;width:100%}
+    th,td{border:1px solid #223457;padding:12px;text-align:left}
+    th{background:#0f1a2f}
+    tr:hover td{background:#0a1428}
+    .newsletter{display:flex;gap:10px}
+    input[type=email]{background:#0a152b;border:1px solid #223457;border-radius:12px;padding:12px;color:#e9f1ff;width:100%}
+    input:focus{outline:none;box-shadow:var(--ring)}
+    .ad{height:90px;border-radius:12px;border:1px dashed #39507a;background:linear-gradient(90deg,#0b1a34,#0d1f3f);display:flex;align-items:center;justify-content:center;color:#8ea6cd}
+    .faq .q{cursor:pointer;padding:14px;border:1px solid #25395f;border-radius:12px;background:#0b162c}
+    .faq .a{display:none;padding:12px 14px 16px;color:#a9c0e7}
+    footer{margin:40px 0 20px;color:#7f95bb}
+    .sticky-cta{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);background:linear-gradient(90deg,#0f1a2f,#122243);border:1px solid #2b4067;padding:12px 16px;border-radius:16px;display:flex;gap:10px;align-items:center;box-shadow:0 20px 40px rgba(3,8,20,.5);z-index:60}
+    .timer{font-variant-numeric:tabular-nums;font-weight:700;color:var(--warn)}
+    .tag{font-size:12px;padding:4px 8px;border-radius:999px;border:1px solid #2b4067;background:#0b1a34;color:#b9c9e6}
+    .sr{position:absolute;left:-9999px}
+    @media (max-width:920px){ .hero{grid-template-columns:1fr} .offer-grid{grid-template-columns:1fr} .kpis{grid-template-columns:1fr} .sticky-cta{width:calc(100% - 24px)} }
+  </style>
+  <script type="application/ld+json" id="schema-json"></script>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <strong>DealWave</strong>
+        <span class="tag">Amazon Associates</span>
+      </div>
+      <nav>
+        <a href="#offers">Top Picks</a>
+        &nbsp;&nbsp;•&nbsp;&nbsp;
+        <a href="#compare">Compare</a>
+        &nbsp;&nbsp;•&nbsp;&nbsp;
+        <a href="#newsletter">Alerts</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <span class="badge">💡 Amazon‑ready — your tag is wired in</span>
+        <h1>Smart Amazon Picks That Pay You</h1>
+        <p>These featured products link through your Associates tag for tracked commissions. The page is fast, compliant, and captures emails for repeat clicks.</p>
+        <div style="display:flex; gap:10px; margin-top:14px">
+          <a class="btn" href="#offers">View Today’s Picks</a>
+          <a class="btn secondary" href="#how">How it earns</a>
+        </div>
+        <div class="kpis" aria-label="Demo metrics">
+          <div class="kpi"><strong id="kpiClicks">0</strong><div>Clicks today</div></div>
+          <div class="kpi"><strong id="kpiCr">0%</strong><div>CTR est.</div></div>
+          <div class="kpi"><strong id="kpiSubs">0</strong><div>New subscribers</div></div>
+        </div>
+      </div>
+      <div class="card pad">
+        <h2>⚡ Daily Deal Refresh</h2>
+        <p>Deals rotate at <span class="timer" id="resetTimer" aria-live="polite">--:--:--</span>. Scarcity nudges clicks.</p>
+        <div class="ad" aria-label="Ad slot">Ad Slot (paste your AdSense code)</div>
+      </div>
+    </section>
+
+    <section id="offers" class="grid">
+      <div class="grid" style="grid-template-columns:1fr 1fr">
+        <h2>Today’s Top Picks</h2>
+        <div style="text-align:right"><span class="tag">Auto‑rotate ON</span></div>
+      </div>
+      <div class="offer-grid" id="offerGrid"></div>
+    </section>
+
+    <section id="compare" class="card pad" style="margin-top:28px">
+      <h2>Compare & Choose</h2>
+      <div class="compare">
+        <table id="compareTable">
+          <thead>
+            <tr>
+              <th scope="col">Product</th>
+              <th scope="col">Best For</th>
+              <th scope="col">Price</th>
+              <th scope="col">Rating</th>
+              <th scope="col">Why We Like It</th>
+              <th scope="col" aria-label="Action"></th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="newsletter" class="card pad" style="margin-top:28px">
+      <h2>Deal Alerts in Your Inbox</h2>
+      <p>Get a single, curated email when we find an unusually good deal. No spam, ever. We generally link back to this website from emails (not directly to Amazon) to comply with Amazon Associates policies.</p>
+      <form class="newsletter" method="post" action="#" onsubmit="handleSubscribe(event)">
+        <label class="sr" for="email">Email</label>
+        <input id="email" type="email" name="email" placeholder="you@example.com" required aria-required="true">
+        <button class="btn" type="submit">Subscribe Free</button>
+      </form>
+      <small id="subMsg" aria-live="polite"></small>
+    </section>
+
+    <section id="how" style="margin-top:28px" class="grid">
+      <div class="card pad">
+        <h2>How This Page Makes Money</h2>
+        <ul>
+          <li>Amazon Associates links in <strong>Top Picks</strong> & <strong>Compare</strong>.</li>
+          <li>Paste <strong>AdSense</strong> code into ad slots for RPM income.</li>
+          <li>Capture emails → send weekly roundups linking back to your site.</li>
+          <li>SEO schema + fast load helps organic traffic.</li>
+        </ul>
+      </div>
+      <div class="card pad">
+        <h2>Quick Setup</h2>
+        <ol>
+          <li>Deploy this single HTML file to Netlify, Vercel, or GitHub Pages.</li>
+          <li>Your Associates tag is pre‑wired—just share the link.</li>
+          <li>Swap or add ASINs as needed; links auto‑generate.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="card pad" style="margin-top:28px">
+      <h2>FAQ</h2>
+      <div class="faq" id="faq">
+        <div class="q" tabindex="0">Can I show prices and ratings?</div>
+        <div class="a">Only if you pull them dynamically via Amazon PA‑API or SiteStripe‑compliant assets. By default, this page hides static price/rating text in Amazon mode.</div>
+        <div class="q" tabindex="0">Where are my affiliate links?</div>
+        <div class="a">Each product button uses your tag automatically. Use the “Copy Link” button to copy any URL.</div>
+        <div class="q" tabindex="0">Can I change the niche?</div>
+        <div class="a">Yes. Update the copy and offers; the layout remains useful.</div>
+      </div>
+    </section>
+
+    <footer class="container">
+      <div style="display:flex;justify-content:space-between;gap:14px;align-items:center">
+        <div>© <span id="year"></span> DealWave • As an Amazon Associate I earn from qualifying purchases. This site uses affiliate links.</div>
+        <div style="display:flex;gap:10px">
+          <a class="tag" href="#">Privacy</a>
+          <a class="tag" href="#">Terms</a>
+          <a class="tag" href="#">Contact</a>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <div class="sticky-cta" role="region" aria-label="Sticky call to action">
+    <span>Next refresh in <span class="timer" id="stickyTimer">--:--:--</span></span>
+    <a class="btn" href="#offers">Shop Today’s Picks</a>
+  </div>
+
+  <script>
+    const AMAZON_MODE = true;
+    const AMAZON_DOMAIN = 'amazon.com';
+    const ASSOC_TAG = 'tling2401-20';
+
+    const OFFERS = [
+      {
+        title: 'Apple 2024 MacBook Air 13″ (M3, 16 GB/512 GB)',
+        bestFor: 'Ultra-portable performance & battery life',
+        asin: 'B0CX24BNQC',
+        url: `https://www.${AMAZON_DOMAIN}/dp/B0CX24BNQC?tag=${ASSOC_TAG}`,
+        pros: 'Fanless & lightweight • Long battery • Premium display & audio',
+        image: 'https://m.media-amazon.com/images/I/71YG+VrvrTL._AC_SX679_.jpg'
+      },
+      {
+        title: 'dot. Card Metal – Digital Business Card – NFC Tap (Black)',
+        bestFor: 'Contactless networking',
+        asin: 'B0CPKQ6P6V',
+        url: `https://www.${AMAZON_DOMAIN}/dp/B0CPKQ6P6V?tag=${ASSOC_TAG}`,
+        pros: 'Elegant metal design • No app needed • Works with iPhone & Android',
+        image: 'https://m.media-amazon.com/images/I/61mNxjMzONL._AC_SX679_.jpg'
+      },
+      {
+        title: 'TP-Link AXE5400 Tri-Band WiFi 6E Router (Archer AXE75)',
+        bestFor: 'High-speed gaming & streaming',
+        asin: 'B0B3SQK74L',
+        url: `https://www.${AMAZON_DOMAIN}/dp/B0B3SQK74L?tag=${ASSOC_TAG}`,
+        pros: '5400 Mbps tri-band • OneMesh support • WPA3 security',
+        image: 'https://m.media-amazon.com/images/I/61H4eNHnzcL._AC_SX679_.jpg'
+      },
+      {
+        title: 'Beats Powerbeats Pro 2 Wireless Bluetooth Earbuds with AppleCare+ (2 years) - Quick Sand',
+        bestFor: 'Anyone who logs good quality sound',
+        asin: 'B0DVZ2DR68',
+        url: `https://www.${AMAZON_DOMAIN}/dp/B0DVZ2DR68?tag=${ASSOC_TAG}`,
+        pros: 'Active Noice Cancelling • Adaptive EQ • Personalized Spatial Audio',
+        image: 'https://m.media-amazon.com/images/I/41RyZmHtSTL._AC_SX679_.jpg'
+      }
+    ];
+
+    const $ = (s,root=document)=>root.querySelector(s);
+    const $$ = (s,root=document)=>Array.from(root.querySelectorAll(s));
+
+    function renderOffers(){
+      const grid = $('#offerGrid');
+      grid.innerHTML = OFFERS.map((o)=>{
+        const url = o.url && o.url.length ? o.url : (o.asin ? buildAmazonURL(o.asin) : '#');
+        return `
+        <article class="offer card pad">
+          <div class="thumb"><img alt="${o.title}" src="${o.image}" loading="lazy" width="600" height="400"></div>
+          <div class="meta"><strong>${o.title}</strong>${AMAZON_MODE ? '' : ' <span class="stars" aria-label="rating">★★★★☆</span>'}</div>
+          ${AMAZON_MODE ? '' : '<div class="price">$99.00</div>'}
+          <div style="color:#9db4d6">${o.pros}</div>
+          <a class="btn" href="${url}" target="_blank" rel="nofollow sponsored noopener">${AMAZON_MODE ? 'View on Amazon' : 'Shop Now'}</a>
+          <button class="btn ghost" data-copy="${url}" aria-label="Copy affiliate link">Copy Link</button>
+        </article>`
+      }).join('');
+
+      $$('#offerGrid [data-copy]').forEach(btn=>{
+        btn.addEventListener('click', async (e)=>{
+          const url = e.currentTarget.getAttribute('data-copy');
+          try{await navigator.clipboard.writeText(url); e.currentTarget.textContent='Copied!'; setTimeout(()=>e.currentTarget.textContent='Copy Link',1200);}catch{alert('Copy failed');}
+        });
+      });
+    }
+
+    function renderCompare(){
+      const tbody = $('#compareTable tbody');
+      tbody.innerHTML = OFFERS.map(o=>{
+        const url = o.url && o.url.length ? o.url : (o.asin ? buildAmazonURL(o.asin) : '#');
+        return `
+        <tr>
+          <td>${o.title}</td>
+          <td>${o.bestFor || ''}</td>
+          <td>${AMAZON_MODE ? 'See price on Amazon' : '$99.00'}</td>
+          <td>${AMAZON_MODE ? '—' : '4.6★'}</td>
+          <td>${o.pros || ''}</td>
+          <td><a class="btn" href="${url}" target="_blank" rel="nofollow sponsored noopener">${AMAZON_MODE ? 'View on Amazon' : 'Get Deal'}</a></td>
+        </tr>`;
+      }).join('');
+    }
+
+    function demoCounters(){
+      const clicks = Math.floor(3 + Math.random()*37);
+      const ctr = (2.5 + Math.random()*3.2).toFixed(1);
+      const subs = Math.floor(Math.random()*5);
+      $('#kpiClicks').textContent = clicks;
+      $('#kpiCr').textContent = ctr + '%';
+      $('#kpiSubs').textContent = subs;
+    }
+
+    function tick(){
+      const now = new Date();
+      const end = new Date();
+      end.setHours(23,59,59,999);
+      const s = Math.max(0, Math.floor((end-now)/1000));
+      const h = String(Math.floor(s/3600)).padStart(2,'0');
+      const m = String(Math.floor((s%3600)/60)).padStart(2,'0');
+      const ss = String(s%60).padStart(2,'0');
+      $('#resetTimer').textContent = `${h}:${m}:${ss}`;
+      $('#stickyTimer').textContent = `${h}:${m}:${ss}`;
+      setTimeout(tick,1000);
+    }
+
+    function handleSubscribe(e){
+      e.preventDefault();
+      const email = $('#email').value.trim();
+      if(!email) return;
+      localStorage.setItem('dealwave_sub', email);
+      $('#subMsg').textContent = 'Thanks! Please confirm via the email we just sent.';
+      $('#email').value='';
+    }
+
+    function initFAQ(){
+      const els = $$('#faq .q');
+      els.forEach(q=> q.addEventListener('click', ()=>{
+        const a = q.nextElementSibling; a.style.display = a.style.display==='block' ? 'none' : 'block';
+      }));
+    }
+
+    function updateProductSchema(){
+      const products = OFFERS.map(o=>({
+        '@type':'Product',
+        name:o.title,
+        image:o.image,
+        description:o.pros,
+        brand:{'@type':'Brand','name':o.title.split(' ')[0]},
+      }));
+      const json = JSON.stringify({'@context':'https://schema.org','@type':'ItemList','itemListElement':products});
+      document.getElementById('schema-json').textContent = json;
+    }
+
+    (function(){
+      document.getElementById('year').textContent = new Date().getFullYear();
+      renderOffers();
+      renderCompare();
+      demoCounters();
+      initFAQ();
+      updateProductSchema();
+      tick();
+      window.handleSubscribe = handleSubscribe;
+    })();
+
+    function buildAmazonURL(asin){
+      const base = `https://www.${AMAZON_DOMAIN}/dp/${asin}`;
+      const url = new URL(base);
+      if(ASSOC_TAG) url.searchParams.set('tag', ASSOC_TAG);
+      return url.toString();
+    }
+  </script>
+</body>
+</html>
